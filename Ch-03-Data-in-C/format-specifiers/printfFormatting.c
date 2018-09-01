@@ -3,8 +3,13 @@ with printf() */
 #include <stdio.h>
 
 /* Function prototype: in C, functions must be declared
- before they are defined */
+ * before they are defined. 
+ * Note: specifying void as a function argument tells the compiler
+ * that the function receives zero arguments, and to error if the
+ * function is ever called with arguments.
+ */
 void printfWrongArgs(void);
+void bases(void);
 
 int main(void) {
     printfWrongArgs();
