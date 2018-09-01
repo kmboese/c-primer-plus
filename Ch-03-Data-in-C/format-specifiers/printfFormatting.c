@@ -11,12 +11,16 @@ with printf() */
 void printfWrongArgs(void);
 void bases(void);
 
+const char* decorator = " ***** "; 
+
 int main(void) {
     printfWrongArgs();
+    bases();
     return 0;
 }
 
 void printfWrongArgs(void) {
+    printf("%s printfWrongArgs %s\n", decorator, decorator);
     int ten = 10;
     int two = 2;
 
@@ -28,4 +32,21 @@ void printfWrongArgs(void) {
      * memory.
     */
     printf("%d minus %d is %d\n", ten);
+    printf("\n");
+}
+
+/* prints 100 in decimal, octal, and hex.*/
+void bases(void) {
+    printf("%s bases %s\n", decorator, decorator);
+    int x = 100;
+    int heX = 0x64;
+    
+    printf("Printing values without base indicator\t: dec = %d; octal = %o; \
+hex = %x\n", x, x, x);
+    printf("Printing values with base indicator\t: dec = %d; octal = %#o; \
+hex = %#x\n", x, x, x);
+
+    if (x == heX) {
+        printf("%d == %#x\n", x, heX);
+    }
 }
