@@ -13,7 +13,7 @@ int main(void) {
     scanf("%f", &bodyWeight);
     printf("The value of your body weight in rhodium is $%.2f\n",
     bodyWeight*POUNDS_TO_TROY_OUNCES*rhodiumDollarsPerTroyOunce);
-    printf("If you find yourself losing weight, simply eat more to maintain"
-    " your value!\n");
+    printf("If you find yourself losing weight, simply eat more to maintain 
+    your value!\n");
     return 0;
 }
