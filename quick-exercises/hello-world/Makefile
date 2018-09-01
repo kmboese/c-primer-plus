@@ -1,5 +1,5 @@
 CC=gcc
-CFLAGS=-I.
+CFLAGS=-g
 DEPS =
 OBJ = helloWorld.o
 
