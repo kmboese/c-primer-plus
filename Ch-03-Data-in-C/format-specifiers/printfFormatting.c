@@ -2,7 +2,16 @@
 with printf() */
 #include <stdio.h>
 
+/* Function prototype: in C, functions must be declared
+ before they are defined */
+void printfWrongArgs(void);
+
 int main(void) {
+    printfWrongArgs();
+    return 0;
+}
+
+void printfWrongArgs(void) {
     int ten = 10;
     int two = 2;
 
@@ -14,5 +23,4 @@ int main(void) {
      * memory.
     */
     printf("%d minus %d is %d\n", ten);
-    return 0;
 }
