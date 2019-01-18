@@ -10,7 +10,7 @@ int main(void) {
     me16 = 4593;
     printf("First, assume int16_t is short: ");
     printf("me16 = %hd\n", me16);
-    printf("Next, let's nto make any assumptions.\n");
+    printf("Next, let's not make any assumptions.\n");
     printf("Instead, use a \"macro\" from inttypes.h\n");
     printf("me16 = %" PRId16 "\n", me16);
 
