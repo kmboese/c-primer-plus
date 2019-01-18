@@ -6,7 +6,8 @@ void floatError(void) {
 
     b = 2.0e20 + 1.0;
     a = b - 2.0e20;
-    printf("b == %f\n", b);
+    printf("b equals 2.0e20, but due to floating errors, \
+b == %f\n", b);
     printf("a = b - 2.0e20, should equal 1.0f\n");
     printf("Due to float \
 precision errors, a actually equals %f \n", a);
