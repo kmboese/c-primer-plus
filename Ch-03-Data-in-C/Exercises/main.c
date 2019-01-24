@@ -5,6 +5,10 @@
 
 #define BUFF_LEN 64
 
+void ex01(void) {
+    printf("Exercise 1:\n");
+}
+
 int main(void) {
     char userSelection[BUFF_LEN];
 
@@ -16,7 +20,7 @@ int main(void) {
 
         // Switch on selection
         if (userSelection[0] == '1'){
-            printf("You selected exercise 1.\n");
+            ex01();
         }
         else {
             printf("Error: input not valid.\n");
