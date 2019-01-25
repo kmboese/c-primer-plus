@@ -8,20 +8,33 @@
 void ex01(void) {
     float underflow = 1.0f;
     float bigBoi = 3.402823e38;
+
     printf("Exercise 1:\n");
     printf("Testing float overflow:\n");
     printf("The number is originally %f\n", underflow);
     printf("Dividing %f by %f should yield 3.2864e-39\n", underflow, bigBoi);
-    printf("But due to underflow, the result in C is %f\n", \
+    printf("But due to underflow, the result in C is %f.\n", \
         underflow/bigBoi);
-    printf("After dividing %f by %f 1000 times, the last 10 results are ", \
+    printf("\nAfter dividing %f by %f 1000 times, the last 10 results are ", \
         underflow, 100.0f);
+
+    // Float: Underflow loop
     for (int i = 0; i < 1000; i++) {
         if (i > 990) {
             printf("%f, ", underflow/(100.0*i) );
         }
     }
-    printf("\n");
+    printf("\n\n");
+
+    // Double: Overflow
+    double big1 = 3.11e200;
+    double big2 = 7.45674e200;
+    printf("Double overflow: the original numbers are %.3e \
+and %.3e\n",\
+        big1, big2);
+    printf("%.3e * %.3e yields %.3e\n", big1, big2, big1*big2);
+
+    
 }
 
 int main(void) {
