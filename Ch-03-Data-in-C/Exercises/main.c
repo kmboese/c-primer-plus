@@ -14,7 +14,7 @@ void ex01(void) {
     printf("Exercise 1:\n");
     printf("Float overflow:\n");
     printf("The number is originally %f\n", underflow);
-    printf("Dividing %f by %f should yield 3.2864e-39\n", underflow, bigBoi);
+    printf("Dividing %f by %e should yield 3.2864e-39\n", underflow, bigBoi);
     printf("But due to underflow, the result in C is %f.\n", \
         underflow/bigBoi);
     printf("\nAfter dividing %f by %f 1000 times, the last 10 results are ", \
@@ -23,10 +23,14 @@ void ex01(void) {
     // Float: Underflow loop
     for (int i = 0; i < 1000; i++) {
         if (i > 990) {
-            printf("%f, ", underflow/(100.0*i) );
+            if (i == 999) {
+                printf("%f. Whoops!\n\n", underflow/(100.0*i));
+            }
+            else {
+                printf("%f, ", underflow/(100.0*i) );
+            }   
         }
     }
-    printf("\n\n");
 
     // Double: Overflow
     double big1 = 3.11e200;
