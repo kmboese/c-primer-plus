@@ -5,12 +5,13 @@
 
 #define BUFF_LEN 64
 
+/* Shows overflow and underflow behavior for various numeric types. */
 void ex01(void) {
     float underflow = 1.0f;
     float bigBoi = 3.402823e38;
 
     printf("Exercise 1:\n");
-    printf("Testing float overflow:\n");
+    printf("Float overflow:\n");
     printf("The number is originally %f\n", underflow);
     printf("Dividing %f by %f should yield 3.2864e-39\n", underflow, bigBoi);
     printf("But due to underflow, the result in C is %f.\n", \
@@ -33,7 +34,16 @@ void ex01(void) {
 and %.3e\n",\
         big1, big2);
     printf("%.3e * %.3e yields %.3e\n", big1, big2, big1*big2);
+    printf("\n");
 
+    // Integer overflow and underflow
+    printf("Integer underflow and overflow:\n");
+    int maxSignedInt = 2147483647;
+    int minSignedInt = -2147483648;
+    printf("Adding one to %d yields %d, an example of integer overflow.\n", \
+        maxSignedInt, maxSignedInt+1);
+    printf("Subtracting one from %d yields %d, an example of integer underflow.\n",\
+        minSignedInt, minSignedInt-1);
     
 }
 
