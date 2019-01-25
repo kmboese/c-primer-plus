@@ -1,5 +1,6 @@
 /* Chapter 3 Exercises */
 #include <stdio.h>
+#include <stdlib.h>
 #include <ctype.h>
 #include <string.h>
 
@@ -66,6 +67,19 @@ void ex03(void) {
 Pumpkin, what was that!?\"\n");
 }
 
+/* Reads in a float and prints it first in decimal-point notation and 
+then in exponential notation. */
+void ex04(void) {
+    char input[BUFF_LEN];
+    float num = 0.0f;
+
+    printf("Enter a floating point number > ");
+    fgets(input, BUFF_LEN, stdin);
+    num = atof(input);
+
+    printf("The input is %f or %e\n", num, num);
+}
+
 int main(void) {
     char userSelection[BUFF_LEN];
 
@@ -74,6 +88,7 @@ int main(void) {
         printf("1 - Number overflow and underflow\n");
         printf("2 - ASCII to ASCII code conversion\n");
         printf("3 - Alarm and a message\n");
+        printf("4 - Floating point as decimal or in exponential form\n");
         printf("> ");
         fgets(userSelection, BUFF_LEN, stdin);
 
@@ -86,6 +101,9 @@ int main(void) {
         }
         else if (userSelection[0] == '3') {
             ex03();
+        }
+        else if (userSelection[0] == '4') {
+            ex04();
         }
         else {
             printf("Error: input not valid.\n");
