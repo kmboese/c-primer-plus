@@ -47,18 +47,34 @@ and %.3e\n",\
     
 }
 
+/* Prints the associated ASCII value given an ASCII character */
+void ex02(void) {
+    char line[BUFF_LEN] = "";
+    char userInput = '\0';
+
+    printf("Enter an ASCII character > ");
+    fgets(line, BUFF_LEN, stdin);
+    userInput = line[0];
+
+    printf("Character '%c' has value %d\n", userInput, userInput);
+}
+
 int main(void) {
     char userSelection[BUFF_LEN];
 
     while (1) {
         printf("Enter exercise number:\n");
         printf("1 - Number overflow and underflow\n");
+        printf("2 - ASCII to ASCII code conversion\n");
         printf("> ");
         fgets(userSelection, BUFF_LEN, stdin);
 
         // Switch on selection
         if (userSelection[0] == '1'){
             ex01();
+        }
+        else if (userSelection[0] == '2') {
+            ex02();
         }
         else {
             printf("Error: input not valid.\n");
