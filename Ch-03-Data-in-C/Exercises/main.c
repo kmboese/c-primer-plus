@@ -80,6 +80,67 @@ void ex04(void) {
     printf("The input is %f or %e\n", num, num);
 }
 
+/* Converts years to seconds */
+void ex05(void) {
+    char input[BUFF_LEN];
+    float years = 0.0f;
+    long long unsigned int seconds = 0;
+
+    printf("Enter your age in years > ");
+    fgets(input, BUFF_LEN, stdin);
+    years = atof(input);
+
+    // Convert years to seconds (loss of precision)
+    seconds = years*365*24*60*60;
+
+    printf("You are %llu seconds old!\n", seconds);
+}
+
+/* Converts quarts of water to number of molecules */
+void ex06(void) {
+    char input[BUFF_LEN];
+    const long double MOLECULES_PER_GRAM = 1.0/3.0e-23;
+    unsigned int GRAMS_PER_QUART = 950;
+    long double quarts = 0.0f;
+    long double molecules = 0.0;
+
+
+    // Get number of quarts
+    printf("Enter a number of quarts of water > ");
+    fgets(input, BUFF_LEN, stdin);
+    quarts = atof(input);
+
+    // Convert quarts to molecules
+    molecules = quarts*GRAMS_PER_QUART*MOLECULES_PER_GRAM;
+    printf("%Lf quarts of water contains %Le molecules!\n",\
+        quarts, molecules);
+}
+
+/* Classic conversion of inches to centimeters */
+void ex07(void) {
+    char input[BUFF_LEN];
+    char inchOrInches[BUFF_LEN];
+    float inches = 0.0f;
+    const float INCHES_TO_CM = 2.54f;
+    
+    printf("Please enter a number of inches > ");
+    fgets(input, BUFF_LEN, stdin);
+    inches = atof(input);
+
+    // Set plurality
+    if (inches < 1.0f - 0.001f || inches > 1.0f + 0.001f) {
+        strcpy(inchOrInches, "inches");
+    }
+
+    else {
+        strcpy(inchOrInches, "inch");
+    }
+
+
+    printf("%f %s = %f centimeters\n", inches, inchOrInches, \
+    inches*INCHES_TO_CM);
+}
+
 int main(void) {
     char userSelection[BUFF_LEN];
 
@@ -89,6 +150,9 @@ int main(void) {
         printf("2 - ASCII to ASCII code conversion\n");
         printf("3 - Alarm and a message\n");
         printf("4 - Floating point as decimal or in exponential form\n");
+        printf("5 - Years to seconds\n");
+        printf("6 - quarts of water to molecules\n");
+        printf("7 - inches to centimeters\n");
         printf("> ");
         fgets(userSelection, BUFF_LEN, stdin);
 
@@ -104,6 +168,15 @@ int main(void) {
         }
         else if (userSelection[0] == '4') {
             ex04();
+        }
+        else if (userSelection[0] == '5') {
+            ex05();
+        }
+        else if (userSelection[0] == '6') {
+            ex06();
+        }
+        else if (userSelection[0] == '7') {
+            ex07();
         }
         else {
             printf("Error: input not valid.\n");
