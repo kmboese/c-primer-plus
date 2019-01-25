@@ -59,6 +59,13 @@ void ex02(void) {
     printf("Character '%c' has value %d\n", userInput, userInput);
 }
 
+/* Sounds an alert and then prints a message */
+void ex03(void) {
+    printf("\a"); // Doesn't make a sound on Windows 7 ¯\_(ツ)_/¯
+    printf("Startled by the sudden sound, Sally shouted, \"By the Great \
+Pumpkin, what was that!?\"\n");
+}
+
 int main(void) {
     char userSelection[BUFF_LEN];
 
@@ -66,6 +73,7 @@ int main(void) {
         printf("Enter exercise number:\n");
         printf("1 - Number overflow and underflow\n");
         printf("2 - ASCII to ASCII code conversion\n");
+        printf("3 - Alarm and a message\n");
         printf("> ");
         fgets(userSelection, BUFF_LEN, stdin);
 
@@ -75,6 +83,9 @@ int main(void) {
         }
         else if (userSelection[0] == '2') {
             ex02();
+        }
+        else if (userSelection[0] == '3') {
+            ex03();
         }
         else {
             printf("Error: input not valid.\n");
