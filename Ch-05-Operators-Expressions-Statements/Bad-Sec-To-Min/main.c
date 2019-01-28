@@ -17,7 +17,12 @@ int main(void) {
         scanf("%d", &sec);
         min = sec/SEC_TO_MIN;
         left = sec % SEC_TO_MIN;
-        printf("%d sec is %d:%2d. \n", sec, min, left);
+        if (left < 10) {
+            printf("%d sec is %d:0%d. \n", sec, min, left);
+        }
+        else {
+            printf("%d sec is %d:%d. \n", sec, min, left);
+        }
         printf("Next input?\n");
     }
     printf("Bye!\n");
