@@ -1,10 +1,13 @@
 /* Bad version of the second to min/sec conversion program */
 #include <stdio.h>
 #define SEC_TO_MIN 60
+#define FORMAT "%s! C is cool!\n"
 
 int main(void) {
     int sec, min, left;
     sec = 1;
+
+    printf(FORMAT, FORMAT);
 
     printf("This program converts seconds to minutes and "
     "seconds.\nJust enter the number of seconds.\n");
