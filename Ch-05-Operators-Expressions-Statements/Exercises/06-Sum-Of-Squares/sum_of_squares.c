@@ -7,16 +7,23 @@
 
 int main(void) {
     char input[BUFF_LEN];
-    unsigned int timePeriods = 0;
+    int timePeriods = 0;
     unsigned long int sum = 0;
 
-    printf("Please enter a time period length over which to sum values > ");
+    printf("Please enter a time period length (n) over which to sum "
+        "the squares from 1 to n:\n");
     fgets(input, BUFF_LEN, stdin);
     timePeriods = strtol(input, NULL, 0);
 
+    if (timePeriods <= 0) {
+        printf("Time period must be a positive number! Exiting...\n");
+        return -1;
+    }
+
     // Summation loop. Note that this is equivalent to (n*(n+1))/2.
-    for (int i = 1; i <= timePeriods; i++) {
-        sum += i;
+    while (timePeriods >= 1) {
+        sum += (timePeriods*timePeriods);
+        timePeriods--;
     }
 
     printf("Sum of values is %ld\n", sum);
