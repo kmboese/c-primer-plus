@@ -52,6 +52,21 @@ void insert(struct LinkedList *ll, int _data) {
     ll->size++;
 }
 
+int find(struct LinkedList *ll, int key) {
+    int count = 1;
+    struct Node *tmp = ll->head;
+    while (tmp->next != NULL) {
+        tmp = tmp->next;
+        if (tmp->data == key) {
+            return count;
+        }
+        count++;
+    }
+
+    // Return -1 if value was not found
+    return -1;
+}
+
 // LL print function
 void printList(struct LinkedList *ll) {
     if (!ll) {
