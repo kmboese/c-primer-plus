@@ -98,8 +98,13 @@ void testDelete(void) {
     printList(list);
 
     // Remove all elements
+    printf("Deleting all elements...\n");
     for (int i = 0; i <= range; i++) {
         delete(list, i);
+    }
+    // Try to delete an element from an empty list
+    if (delete(list, 1) == -1) {
+        printf("Error in deleting item from list!\n");
     }
     printList(list);
 
