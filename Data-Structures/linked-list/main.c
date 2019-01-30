@@ -4,28 +4,46 @@
 #include <stdlib.h>
 #include "linked_list.h"
 
-#define INSERT_RANGE 10
+#define NUM_ITEMS 1000000
 
 // Test functions
-void testFind();
+void testInsert(void);
+void testFind(void);
 
 int main(void) {
-
+    // Run through all tests
+    testInsert();
     testFind();
 
     return 0;
 }
 
-void testFind() {
-    printf("##### testFind() #####\n");
+void testInsert(void) {
+    struct LinkedList *list = malloc(sizeof(struct LinkedList));
+    init(list);
 
-    int key = 3;
-    int ret = 0;
+    printf("##### %s #####\n", __func__);
+    printf("Inserting %d items...\n", NUM_ITEMS);
+
+    for (unsigned int i = 0; i < NUM_ITEMS; i++) {
+        insert(list, i);
+    }
+
+    // Destroy list
+    printf("PASS!\n\n");
+    printf("Destroying list...\n");
+    destroy(list);
+}
+
+void testFind(void) {
+    printf("##### %s #####\n", __func__);
+
+    int key = 3, range = 10, ret = 0;
     struct LinkedList *list = malloc(sizeof(struct LinkedList));
     init(list);
 
     // Insert some data into the list
-    for (int i = 1; i <= INSERT_RANGE; i++) {
+    for (int i = 1; i <= range; i++) {
         insert(list, i);
     }
 
@@ -42,5 +60,6 @@ void testFind() {
     printf("The list contains %d elements\n", list->size);
 
     // Destroy the list
+    printf("PASS!\n\n");
     destroy(list);
 }
