@@ -82,10 +82,7 @@ void testFind(void) {
 
 void testdeleteNode(void) {
     printf("##### %s #####\n", __func__);
-
-    int key = 2;
     int range = 10;
-
     struct LinkedList *list = malloc(sizeof(struct LinkedList));
     init(list);
 
