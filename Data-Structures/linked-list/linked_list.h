@@ -15,6 +15,9 @@ struct LinkedList {
 /* Initializes the memory for the contents of a linked list and sets default 
 values */
 void init(struct LinkedList *ll);
+/* Takes a linked list and a function pointer, and calls that function on each
+node in the list.*/
+int iterate(struct LinkedList *ll, void (*fun)(struct Node *n));
 /* Inserts data after the head of a linked list */
 void insert(struct LinkedList *ll, int _data);
 /* Searches for a given key value in the linked list. Returns the index of the 

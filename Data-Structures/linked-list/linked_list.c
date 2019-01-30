@@ -14,6 +14,21 @@ void init(struct LinkedList *ll) {
     ll->size = 0;
 }
 
+int iterate(struct LinkedList *ll, void (*fun)(struct Node *n)) {
+    if (!ll) {
+        perror("Error: list not defined!\n");
+        return -1;
+    }
+
+    struct Node *tmp = ll->head;
+    // Apply function to all nodes in the list
+    while (tmp->next != NULL) {
+        tmp = tmp->next;
+        (*fun)(tmp);
+    }
+    return 0;
+}
+
 // Deallocates memory for a linked list
 void destroy(struct LinkedList *ll) {
     // Deallocate memory for nodes

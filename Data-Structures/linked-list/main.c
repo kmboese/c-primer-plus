@@ -4,18 +4,27 @@
 #include <stdlib.h>
 #include "linked_list.h"
 
-#define NUM_ITEMS 1000000
+#define NUM_ITEMS 10000
 
 // Test functions
 void testInsert(void);
 void testFind(void);
+void testIterate(void);
+
+// Iterate functions
+void plusOne(struct Node *n);
 
 int main(void) {
     // Run through all tests
     testInsert();
     testFind();
+    testIterate();
 
     return 0;
+}
+
+void plusOne(struct Node *n) {
+    n->data++;
 }
 
 void testInsert(void) {
@@ -30,8 +39,8 @@ void testInsert(void) {
     }
 
     // Destroy list
-    printf("PASS!\n\n");
     printf("Destroying list...\n");
+    printf("PASS!\n\n");
     destroy(list);
 }
 
@@ -54,6 +63,10 @@ void testFind(void) {
     }
 
     // Try to find data that shouldn't exist
+    key = -1;
+    if (find(list, key) == -1) {
+        printf("%d not found in the list\n", key);
+    }
 
     // Print the list
     printList(list);
@@ -62,4 +75,27 @@ void testFind(void) {
     // Destroy the list
     printf("PASS!\n\n");
     destroy(list);
+}
+
+void testIterate(void) {
+    printf("##### %s #####\n", __func__);
+
+    struct LinkedList *list = malloc(sizeof(struct LinkedList));
+    init(list);
+
+    // Insert all zeroes
+    for (int i = 0; i < 10; i++) {
+        insert(list, 0);
+    }
+
+    // Add one to all elements using iterate
+    iterate(list, &plusOne);
+
+    // Print the list (should be all 1's)
+    printList(list);
+
+    // Destroy the list
+    printf("PASS!\n\n");
+    destroy(list);
+
 }
