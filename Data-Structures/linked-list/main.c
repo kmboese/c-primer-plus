@@ -2,6 +2,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 #include "linked_list.h"
 
 #define NUM_ITEMS 10000
@@ -11,6 +12,7 @@ void testInsert(void);
 void testFind(void);
 void testdeleteNode(void);
 void testIterate(void);
+void testCopy(void);
 
 
 // Iterate functions
@@ -22,6 +24,7 @@ int main(void) {
     testFind();
     testdeleteNode();
     testIterate();
+    testCopy();
 
     return 0;
 }
@@ -130,5 +133,35 @@ void testIterate(void) {
     // Destroy the list
     printf("PASS!\n\n");
     destroy(list);
+}
 
+void testCopy(void) {
+    printf("##### %s #####\n", __func__);
+
+    // Allocate memory for two lists
+    struct LinkedList *list = malloc(sizeof(struct LinkedList));
+    init(list);
+    struct LinkedList *cp = malloc(sizeof(struct LinkedList));
+    init(cp);
+
+    // Insert random numbers
+    
+    for (int i = 0; i < 10; i++) {
+        insert(list, (int)rand()%100);
+    }
+
+    // Copy original to cp
+    copy(cp, list);
+
+    // Print the original list
+    printf("Source list:\n");
+    printList(list);
+
+    // Print the copied list
+    printf("Copied list:\n");
+    printList(cp);
+
+    // Destroy the list
+    printf("PASS!\n\n");
+    destroy(list);
 }
