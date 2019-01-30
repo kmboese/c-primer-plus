@@ -76,6 +76,8 @@ int delete(struct LinkedList *ll, int key) {
             curr->next = next->next;
             // Free the deleted Node
             free(next);
+            // Decrement the list size
+            ll->size--;
             return 0;
         }
         curr = next;
@@ -105,6 +107,10 @@ int find(struct LinkedList *ll, int key) {
 void printList(struct LinkedList *ll) {
     if (!ll) {
         fprintf(stderr, "Error: linked list is not initialized!\n");
+        return;
+    }
+    if (ll->size == 0) {
+        printf("Linked list is empty!\n");
         return;
     }
     struct Node *tmp = ll->head;
