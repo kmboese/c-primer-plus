@@ -9,7 +9,9 @@
 // Test functions
 void testInsert(void);
 void testFind(void);
+void testDelete(void);
 void testIterate(void);
+
 
 // Iterate functions
 void plusOne(struct Node *n);
@@ -18,6 +20,7 @@ int main(void) {
     // Run through all tests
     testInsert();
     testFind();
+    testDelete();
     testIterate();
 
     return 0;
@@ -71,6 +74,34 @@ void testFind(void) {
     // Print the list
     printList(list);
     printf("The list contains %d elements\n", list->size);
+
+    // Destroy the list
+    printf("PASS!\n\n");
+    destroy(list);
+}
+
+void testDelete(void) {
+    printf("##### %s #####\n", __func__);
+
+    int key = 2;
+    int range = 10;
+
+    struct LinkedList *list = malloc(sizeof(struct LinkedList));
+    init(list);
+
+    // Insert some data into the list
+    for (int i = 1; i <= range; i++) {
+        insert(list, i);
+    }
+
+    // Print the list
+    printList(list);
+
+    // Remove all elements
+    for (int i = 0; i <= range; i++) {
+        delete(list, i);
+    }
+    printList(list);
 
     // Destroy the list
     printf("PASS!\n\n");
