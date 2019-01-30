@@ -67,7 +67,7 @@ void insert(struct LinkedList *ll, int _data) {
     ll->size++;
 }
 
-int delete(struct LinkedList *ll, int key) {
+int deleteNode(struct LinkedList *ll, int key) {
     struct Node *curr = ll->head;
     struct Node *next = curr->next;
 

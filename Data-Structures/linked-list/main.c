@@ -9,7 +9,7 @@
 // Test functions
 void testInsert(void);
 void testFind(void);
-void testDelete(void);
+void testdeleteNode(void);
 void testIterate(void);
 
 
@@ -20,7 +20,7 @@ int main(void) {
     // Run through all tests
     testInsert();
     testFind();
-    testDelete();
+    testdeleteNode();
     testIterate();
 
     return 0;
@@ -80,7 +80,7 @@ void testFind(void) {
     destroy(list);
 }
 
-void testDelete(void) {
+void testdeleteNode(void) {
     printf("##### %s #####\n", __func__);
 
     int key = 2;
@@ -100,10 +100,10 @@ void testDelete(void) {
     // Remove all elements
     printf("Deleting all elements...\n");
     for (int i = 0; i <= range; i++) {
-        delete(list, i);
+        deleteNode(list, i);
     }
     // Try to delete an element from an empty list
-    if (delete(list, 1) == -1) {
+    if (deleteNode(list, 1) == -1) {
         printf("Error in deleting item from list!\n");
     }
     printList(list);
