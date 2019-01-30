@@ -45,7 +45,6 @@ void destroy(struct LinkedList *ll) {
     free(ll);
 }
 
-// LL insert function
 void insert(struct LinkedList *ll, int _data) {
     // Create a new node
     struct Node *tmp = malloc(sizeof(struct Node));
@@ -67,6 +66,25 @@ void insert(struct LinkedList *ll, int _data) {
     // Increment the size
     ll->size++;
 }
+
+int delete(struct LinkedList *ll, int key) {
+    struct Node *curr = ll->head;
+    struct Node *next = curr->next;
+
+    while (next != NULL) {
+        if (next->data == key) {
+            curr->next = next->next;
+            // Free the deleted Node
+            free(next);
+            return 0;
+        }
+        curr = next;
+        next = next->next;        
+    }
+
+    return -1;
+}
+
 
 int find(struct LinkedList *ll, int key) {
     int index = 0;
