@@ -14,6 +14,22 @@ void init(struct LinkedList *ll) {
     ll->size = 0;
 }
 
+int copy(struct LinkedList *dest, struct LinkedList *src) {
+    if (!dest || !src) {
+        printf("%s error: dest or source not initialized!\n", __func__);
+        return -1;
+    }
+
+    struct Node *tmp = src->head;
+    // Insert all data from src into dest
+    while  (tmp->next != NULL) {
+        tmp = tmp->next;
+        insert(dest, tmp->data);
+    }
+
+    return 0;
+}
+
 int iterate(struct LinkedList *ll, void (*fun)(struct Node *n)) {
     if (!ll) {
         perror("Error: list not defined!\n");

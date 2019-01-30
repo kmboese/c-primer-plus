@@ -15,6 +15,9 @@ struct LinkedList {
 /* Initializes the memory for the contents of a linked list and sets default 
 values */
 void init(struct LinkedList *ll);
+/* Copies the contents of one linked list to another. Returns 0 if success,
+-1 otherwise. */
+int copy(struct LinkedList *dest, struct LinkedList *src);
 /* Takes a linked list and a function pointer, and calls that function on each
 node in the list.*/
 int iterate(struct LinkedList *ll, void (*fun)(struct Node *n));
