@@ -1,6 +1,5 @@
 targets	:= main 
-objs	:= main.o myProg.o
-
+objs	:= main.o linked_list.o
 CC		:= gcc
 CFLAGS	:= -Wall
 CFLAGS	+= -g
@@ -19,7 +18,7 @@ deps := $(patsubst %.o,%.d,$(objs))
 DEPFLAGS = -MMD -MF $(@:.o=.d)
 
 #compiling the main executable
-myProg: $(objs)
+main: $(objs)
 	@echo "CC $@"
 	$(Q)$(CC) $(CFLAGS) -o $@ $^
 
