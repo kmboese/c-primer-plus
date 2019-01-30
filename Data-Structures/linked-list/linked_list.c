@@ -18,11 +18,12 @@ void init(struct LinkedList *ll) {
 void destroy(struct LinkedList *ll) {
     // Deallocate memory for nodes
     struct Node *curr = ll->head;
+    struct Node *next;
     //struct Node *next = curr->next;
     while (curr != NULL) {
-        struct Node *victim = curr;
-        curr = curr->next;
-        free(victim);
+        next = curr->next;
+        free(curr);
+        curr = next;
     }
 
     // free the linked list struct
