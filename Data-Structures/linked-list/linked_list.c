@@ -53,14 +53,14 @@ void insert(struct LinkedList *ll, int _data) {
 }
 
 int find(struct LinkedList *ll, int key) {
-    int count = 1;
+    int index = 0;
     struct Node *tmp = ll->head;
     while (tmp->next != NULL) {
         tmp = tmp->next;
         if (tmp->data == key) {
-            return count;
+            return index;
         }
-        count++;
+        index++;
     }
 
     // Return -1 if value was not found
