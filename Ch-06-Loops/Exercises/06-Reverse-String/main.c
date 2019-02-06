@@ -7,38 +7,82 @@
 #define BUFF_LEN 64     // Max length of a char array
 
 void reverse(char *original, char *rev);
+// Takes in a string and returns the first word
+void getWord(char *str, char *word);
+void strip(char *str);
 
 int main(void) {
-    char input[BUFF_LEN];
+    char input[BUFF_LEN], word[BUFF_LEN];
     char reverseString[BUFF_LEN];
 
     while (1) {
         //Get single word from user
         printf("Enter single word, or \"exit\" to exit > ");
-        scanf("%s", input);
+        fgets(input, BUFF_LEN, stdin);
+        getWord(input, word);
+        // Strip the newline
+        strip(word);
 
-        // Check for exit condition
-        if (strcmp(input, "exit") == 0) {
+        if (strcmp(word, "\n") == 0) {
+            continue;
+        }
+
+        if (strcmp(word, "exit") == 0) {
             break;
         }
 
         // Reverse the word and print the result
-        reverse(input, reverseString);
-        printf("Original string: %s\tReversed string: %s\n", input, reverseString);
+        reverse(word, reverseString);
+        printf("Original string: %s\tReversed string: %s\n", word, reverseString);
+
+        // Clear the contents of strings
+        memset(reverseString, 0, BUFF_LEN);
+        //memset(word, 0, BUFF_LEN);
     }
+
+    printf("Goodbye!\n");
     return 0;
 }
 
 void reverse(char *str, char *rev) {
-    char tmp[BUFF_LEN];
     int index = 0;
 
     // Copy the string backwards (skip last null character)
     for (int i = strlen(str)-1; i >= 0; i--) {
-        tmp[index] = str[i];
+        rev[index] = str[i];
         index++;
     }
+    // add null terminator
+    rev[index] = '\0';
+}
 
-    // Copy the temp string to the reverse string
-    strcpy(rev, tmp);
+void getWord(char *str, char *word) {
+    if (!str || !word) {
+        return;
+    }
+
+    int index = 0;
+
+    for (int i = 0; i <= strlen(str); i++) {
+        if (str[i] == ' ') {
+            break;
+        }
+        else {
+            word[index] = str[i];
+            index++;
+        }
+    }
+
+    // add null terminator
+    word[index] = '\0';
+}
+
+void strip(char *str) {
+    for (int i = 0; i <= strlen(str); i++) {
+        if (str[i] == '\n' || str[i] == '\t') {
+            str[i] = '\0';
+            return;
+        }
+    }
+
 }
