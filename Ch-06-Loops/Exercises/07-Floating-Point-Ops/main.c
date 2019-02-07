@@ -9,10 +9,27 @@
 #define NON_NUMERIC -1
 #define FLOAT_ZERO -2
 
+/* 
+ * Get two floating point numbers from the user.
+ * Input: two string pointers
+ * Output: void 
+*/
 void getFloats(char *str1, char *str2);
-// Returns -1 if the input is valid, zero otherwise.
+/* 
+ * Parse two floating point strings
+ * Input: two strings and two floats into which the float values will be read
+ * Output: 
+ *  0 if no errors
+ *  NON_NUMERIC if either string is non-numeric
+ *  FLOAT_ZERO if either string is the number zero
+*/
 int parseInput(char *str1, char *str2, float *val1, float *val2);
-// Strips newlines from string
+/* 
+ * Input: two non-zero float values.
+ * Output: the difference of the two floats divided by their product 
+*/
+float calcResult(float val1, float val2);
+// Strips newlines from given string
 void strip(char *str);
 
 int main(void) {
@@ -33,7 +50,7 @@ int main(void) {
             break;
         }
 
-        result = (val1-val2)/(val1*val2);
+        result = calcResult(val1, val2);
         printf("(%.3f-%.3f)/(%.3f*%.3f) = %.3f\n",\
             val1, val2, val1, val2, result);
     } 
@@ -81,4 +98,8 @@ void strip(char *str) {
             return;
         }
     }
+}
+
+float calcResult(float val1, float val2) {
+    return(val1-val2)/(val1*val2);
 }
